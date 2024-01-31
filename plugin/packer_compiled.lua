@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-better-whitespace"] = {
+    loaded = true,
+    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
+    url = "https://github.com/ntpeters/vim-better-whitespace"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/vim-commentary",

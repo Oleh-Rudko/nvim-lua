@@ -34,10 +34,12 @@ return require('packer').startup(function(use)
     }
     use { 'neoclide/coc.nvim', branch='release' }
 
-    -- -- colorscheme
+    -- colorscheme
     use 'hoob3rt/lualine.nvim'
     -- use 'gruvbox-community/gruvbox'
     use { "ellisonleao/gruvbox.nvim" }
+    -- UI
+    use('ntpeters/vim-better-whitespace')
 
     -- use {
     --     'svrana/neosolarized.nvim',
@@ -107,7 +109,6 @@ return require('packer').startup(function(use)
     -- Plug 'ap/vim-css-color' " highlight colors in css
     -- Plug 'ryanoasis/vim-devicons'
     -- Plug 'vim-airline/vim-airline'
-    -- Plug 'ntpeters/vim-better-whitespace'
     -- Plug 'honza/vim-snippets'
     -- let g:dbs = {
     -- \ 'dev': 'postgres://postgres:password@localhost:5433/acuity_development'
