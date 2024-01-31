@@ -213,6 +213,17 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
+-- "rspec vim mappings
+vim.api.nvim_set_keymap('n', '<leader>s', 
+    ":call RunNearestSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>t', 
+    ":call RunCurrentSpecFile()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>l', 
+    ":call RunLastSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>*', 
+    ":call RunAllSpecs()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.g.rspec_command = "silent !tmux send-keys -t spec 'clear' C-m 'bundle exec rspec --format progress --order rand {spec}' C-m"
+
 -- Mappings for CoCList
 -- code actions and coc stuff
 ---@diagnostic disable-next-line: redefined-local
@@ -245,11 +256,5 @@ local opts = {silent = true, nowait = true}
 --     let g:ctrlp_switch_buffer = 'et'
 -- endif
 -- let g:ackprg = 'rg --vimgrep --no-heading'
--- "rspec vim mappings
--- map <Leader>s :call RunNearestSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR> <CR>
--- map <Leader>t :call RunCurrentSpecFile()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR> <CR>
--- map <Leader>l :call RunLastSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR>
--- map <Leader>* :call RunAllSpecs()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR> <CR>
--- let g:rspec_command = "silent !tmux send-keys -t spec 'clear' C-m 'bundle exec rspec --format progress --order rand {spec}' C-m"
 -- nmap <leader>gs :G<CR>
 
