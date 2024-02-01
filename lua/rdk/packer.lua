@@ -6,9 +6,8 @@ return require('packer').startup(function(use)
 
     -- for better highlight files
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use("nvim-treesitter/playground")
     use('windwp/nvim-ts-autotag')
-    use('HiPhish/nvim-ts-rainbow2')
+    -- use('HiPhish/nvim-ts-rainbow2') -- is not working now maybe later try
 
     -- telescope for fzf
     use {

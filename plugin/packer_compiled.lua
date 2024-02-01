@@ -119,20 +119,15 @@ _G.packer_plugins = {
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-ts-rainbow2"] = {
+  ["nvim-ts-autotag"] = {
     loaded = true,
-    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow2",
-    url = "https://github.com/HiPhish/nvim-ts-rainbow2"
+    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
