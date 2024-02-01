@@ -60,8 +60,6 @@ return require('packer').startup(function(use)
     use('tpope/vim-commentary')
     use('sheerun/vim-polyglot')
     use('slim-template/vim-slim')
-    use('tpope/vim-dadbod')
-    use('kristijanhusak/vim-dadbod-ui')
     use('github/copilot.vim')
     use('windwp/nvim-autopairs')
     use('norcalli/nvim-colorizer.lua')
@@ -75,12 +73,24 @@ return require('packer').startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
 
-    -- 	use('kristijanhusak/vim-dadbod-ui') -- sql
-    -- 	use({
-    -- 				'ojroques/vim-oscyank',
-    -- 				tag = 'v1.0.0'
-    -- 			}
-    -- 	)
+    -- SQL ui
+    use {
+        'kristijanhusak/vim-dadbod-ui',
+        requires = {
+            'tpope/vim-dadbod',
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' } }
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer'
+        },
+        config = function()
+            vim.g.db_ui_use_nerd_fonts = 1
+        end
+    }
+
     -- Plug 'mileszs/ack.vim' " Tha's for ack(search)
     -- Plug 'jparise/vim-graphql'
     -- Plug 'leafgarland/typescript-vim'
