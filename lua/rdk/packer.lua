@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
 
     -- UI
     -- colorscheme
-    use 'hoob3rt/lualine.nvim'
+    use('hoob3rt/lualine.nvim')
     use('ntpeters/vim-better-whitespace')
     use('Mofiqul/vscode.nvim')
     -- use { "ellisonleao/gruvbox.nvim" } -- gruvbox.rc.lua uncomment
@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
 
-    -- 	use('kristijanhusak/vim-dadbod-ui')
+    -- 	use('kristijanhusak/vim-dadbod-ui') -- sql
     -- 	use({
     -- 				'ojroques/vim-oscyank',
     -- 				tag = 'v1.0.0'
@@ -86,9 +86,6 @@ return require('packer').startup(function(use)
     -- Plug 'leafgarland/typescript-vim'
     -- Plug 'maxmellon/vim-jsx-pretty'
     -- Plug 'peitalin/vim-jsx-typescript'
-    -- Plug 'ap/vim-css-color' " highlight colors in css
-    -- Plug 'ryanoasis/vim-devicons'
-    -- Plug 'vim-airline/vim-airline'
     -- Plug 'honza/vim-snippets'
     -- let g:dbs = {
     -- \ 'dev': 'postgres://postgres:password@localhost:5433/acuity_development'
