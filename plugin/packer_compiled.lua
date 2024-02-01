@@ -89,11 +89,6 @@ _G.packer_plugins = {
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -123,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-ts-rainbow2"] = {
+    loaded = true,
+    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow2",
+    url = "https://github.com/HiPhish/nvim-ts-rainbow2"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -198,6 +198,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/vim-slim",
     url = "https://github.com/slim-template/vim-slim"
+  },
+  ["vscode.nvim"] = {
+    loaded = true,
+    path = "/Users/rdk/.local/share/nvim/site/pack/packer/start/vscode.nvim",
+    url = "https://github.com/Mofiqul/vscode.nvim"
   }
 }
 

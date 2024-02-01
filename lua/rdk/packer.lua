@@ -34,24 +34,12 @@ return require('packer').startup(function(use)
     }
     use { 'neoclide/coc.nvim', branch='release' }
 
+    -- UI
     -- colorscheme
     use 'hoob3rt/lualine.nvim'
-    -- use 'gruvbox-community/gruvbox'
-    use { "ellisonleao/gruvbox.nvim" }
-    -- UI
     use('ntpeters/vim-better-whitespace')
-
-    -- use {
-    --     'svrana/neosolarized.nvim',
-    --     requires = { 'tjdevries/colorbuddy.nvim' }
-    -- }
-    -- use({
-    --         'rose-pine/neovim',
-    --         as = 'rose-pine',
-    --         config = function()
-    --             vim.cmd('colorscheme rose-pine')
-    --         end
-    --     })
+    use('Mofiqul/vscode.nvim')
+    -- use { "ellisonleao/gruvbox.nvim" } -- gruvbox.rc.lua uncomment
 
     -- nerdtree open then tree of files/folders
     use('preservim/nerdtree')
@@ -72,15 +60,11 @@ return require('packer').startup(function(use)
     use('slim-template/vim-slim')
     use('tpope/vim-dadbod')
     use('kristijanhusak/vim-dadbod-ui')
-    -- highlight word under cursor
-    -- use('itchyny/vim-cursorword')
     use('github/copilot.vim')
     use('windwp/nvim-autopairs')
-    -- use('windwp/nvim-ts-autotag')
     use('norcalli/nvim-colorizer.lua')
     use('lewis6991/gitsigns.nvim')
-    -- use('HiPhish/nvim-ts-rainbow2') - later
-    -- use('luochen1990/rainbow') not working
+    use('HiPhish/nvim-ts-rainbow2')
 
     -- harpoon
     use('nvim-lua/plenary.nvim')
@@ -96,11 +80,6 @@ return require('packer').startup(function(use)
     -- 				tag = 'v1.0.0'
     -- 			}
     -- 	)
-    -- 	use {
-    -- 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    -- or                            , branch = '0.1.x',
-    -- 		requires = { {'nvim-lua/plenary.nvim'} }
-    -- 	}
     -- Plug 'mileszs/ack.vim' " Tha's for ack(search)
     -- Plug 'jparise/vim-graphql'
     -- Plug 'leafgarland/typescript-vim'

@@ -1,4 +1,3 @@
--- vim.g.rainbow_active = 1 -- 1 to enable, 0 to disable
 vim.o.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -15,7 +14,7 @@ vim.opt.autowrite = false
 
 vim.opt.ttyfast = true
 vim.opt.lazyredraw = true
-vim.opt.undofile = true
+vim.opt.undofile = false
 
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")

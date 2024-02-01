@@ -4,8 +4,8 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = true,
-    -- theme = "solarized_dark",
-    theme = "gruvbox-material",
+    -- theme = "gruvbox-material",
+    theme = "vscode",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
