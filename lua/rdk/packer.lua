@@ -6,6 +6,9 @@ return require('packer').startup(function(use)
 
     -- for better highlight files
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use("nvim-treesitter/playground")
+    use('windwp/nvim-ts-autotag')
+    use('HiPhish/nvim-ts-rainbow2')
 
     -- telescope for fzf
     use {
@@ -64,7 +67,6 @@ return require('packer').startup(function(use)
     use('windwp/nvim-autopairs')
     use('norcalli/nvim-colorizer.lua')
     use('lewis6991/gitsigns.nvim')
-    use('HiPhish/nvim-ts-rainbow2')
 
     -- harpoon
     use('nvim-lua/plenary.nvim')
