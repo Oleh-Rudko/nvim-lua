@@ -6,4 +6,6 @@
 2. cd .config -> `git clone git@github.com:Oleh-Rudko/nvim-lua.git`
 3. `git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
-4. open nvim and install all packages
+4. open nvim in the file -> packer.lua and run :PackerInstall
+5. Also run :TSUpdate
+6. If coc-nvim is not installed then just run :CocInstall coc-tsserver etc...
