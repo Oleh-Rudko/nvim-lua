@@ -214,13 +214,13 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 -- "rspec vim mappings
-vim.api.nvim_set_keymap('n', '<leader>s', 
+vim.api.nvim_set_keymap('n', '<leader>s',
     ":call RunNearestSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>t', 
+vim.api.nvim_set_keymap('n', '<leader>t',
     ":call RunCurrentSpecFile()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>l', 
+vim.api.nvim_set_keymap('n', '<leader>l',
     ":call RunLastSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>*', 
+vim.api.nvim_set_keymap('n', '<leader>*',
     ":call RunAllSpecs()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
 vim.g.rspec_command = "silent !tmux send-keys -t spec 'clear' C-m 'bundle exec rspec --format progress --order rand {spec}' C-m"
 
