@@ -41,3 +41,14 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>a', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
+
+local grep_word_under_cursor = function()
+	local filetype = string.match(vim.api.nvim_buf_get_name(0), "%.%w*$") or vim.o.filetype
+	if filetype then
+		vim.api.nvim_input([[:vim <C-R><C-W> **/*]] .. filetype .. [[<CR>:cope<CR>]])
+	else
+		vim.notify("Filetype is nil. Can't grep that shit.", vim.log.levels.ERROR, {})
+	end
+end
+
+vim.keymap.set({ "n", "v" }, "<leader>k", function() grep_word_under_cursor() end, { noremap = true, silent = true })

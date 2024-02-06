@@ -91,7 +91,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Plug 'mileszs/ack.vim' " Tha's for ack(search)
+    -- use('mileszs/ack.vim')
     -- Plug 'jparise/vim-graphql'
     -- Plug 'leafgarland/typescript-vim'
     -- Plug 'maxmellon/vim-jsx-pretty'
