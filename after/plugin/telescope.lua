@@ -42,9 +42,19 @@ vim.keymap.set('n', '<leader>a', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
+-- in this case it'll open the Telescope
+-- local grep_word_under_cursor = function()
+--   local word = vim.fn.expand("<cword>")
+--   vim.fn.feedkeys(vim.api.nvim_replace_termcodes(":Telescope grep_string search=" .. word .. "<CR>", true, false, true), "n")
+-- end
+
+-- vim.keymap.set("n", "<leader>k", grep_word_under_cursor, { noremap = true, silent = true })
+
 local grep_word_under_cursor = function()
   local word = vim.fn.expand("<cword>")
-  vim.fn.feedkeys(vim.api.nvim_replace_termcodes(":Telescope grep_string search=" .. word .. "<CR>", true, false, true), "n")
+
+  vim.cmd("silent grep -R " .. word .. " *")
+  vim.cmd("copen")
 end
 
 vim.keymap.set("n", "<leader>k", grep_word_under_cursor, { noremap = true, silent = true })
