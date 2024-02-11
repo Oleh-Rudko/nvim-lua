@@ -7,7 +7,6 @@ return require('packer').startup(function(use)
     -- for better highlight files
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('windwp/nvim-ts-autotag')
-    -- use('HiPhish/nvim-ts-rainbow2') -- is not working now maybe later try
 
     -- telescope for fzf
     use {
@@ -90,14 +89,4 @@ return require('packer').startup(function(use)
             vim.g.db_ui_use_nerd_fonts = 1
         end
     }
-
-    -- use('mileszs/ack.vim')
-    -- Plug 'jparise/vim-graphql'
-    -- Plug 'leafgarland/typescript-vim'
-    -- Plug 'maxmellon/vim-jsx-pretty'
-    -- Plug 'peitalin/vim-jsx-typescript'
-    -- Plug 'honza/vim-snippets'
-    -- let g:dbs = {
-    -- \ 'dev': 'postgres://postgres:password@localhost:5433/acuity_development'
-    -- \ }
 end)
