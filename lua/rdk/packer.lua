@@ -11,9 +11,9 @@ return require('packer').startup(function(use)
     -- telescope for fzf
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
+    use("jiaoshijie/undotree")
 
     local coc_global_extensions = {
         'coc-css',
