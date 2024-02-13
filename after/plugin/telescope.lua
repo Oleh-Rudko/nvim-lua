@@ -44,7 +44,7 @@ vim.keymap.set('n', '<leader>A', function()
 end)
 
 local exclude_dirs = "--exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.git --exclude-dir=.cache --exclude-dir=public --exclude-dir=vendor --exclude-dir=log --exclude-dir=tmp"
-local exclude_files="--exclude='*.dump'"
+local exclude_files="--exclude='*.dump' --exclude='*.lock'"
 
 -- open Grep in the copen default vim window
 vim.keymap.set('n', '<leader>a', function()

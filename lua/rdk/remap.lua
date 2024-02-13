@@ -144,6 +144,7 @@ vim.api.nvim_create_autocmd("User", {
 local opts = {silent = true, nowait = true}
 vim.keymap.set("x", "<leader>gs", "<Plug>(coc-codeaction-selected)<CR>", opts)
 vim.keymap.set("n", "<leader>gs", "<Plug>(coc-codeaction-selected)<CR>", opts)
+vim.keymap.set("n", "gs", "<Plug>(coc-codeaction-selected)<CR>", opts)
 
 -- LATER
 -- Remap keys for apply code actions at the cursor position.

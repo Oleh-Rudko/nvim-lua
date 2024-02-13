@@ -1,3 +1,5 @@
+vim.cmd [[let NERDTreeWinSize=42]]
+
 vim.keymap.set('n', '<leader>n', vim.cmd.NERDTreeToggle)
 vim.keymap.set('n', '<leader>N', vim.cmd.NERDTreeFind)
 -- toggle DBUIToggle
