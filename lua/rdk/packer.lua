@@ -35,6 +35,20 @@ return require('packer').startup(function(use)
     }
     use { 'neoclide/coc.nvim', branch='release' }
 
+    -- chat gpt
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "folke/trouble.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
+
     -- UI
     -- colorscheme
     use('hoob3rt/lualine.nvim')
