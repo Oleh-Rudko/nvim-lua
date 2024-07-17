@@ -43,13 +43,21 @@ vim.keymap.set('n', '<leader>A', function()
   builtin.live_grep();
 end)
 
-local exclude_dirs = "--exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.git --exclude-dir=.cache --exclude-dir=public --exclude-dir=vendor --exclude-dir=log --exclude-dir=tmp"
-local exclude_files="--exclude='*.dump' --exclude='*.lock' --exclude='.eslintcache' --exclude='.DS_Store' --exclude='*.min.js' --exclude='*.min.css' --exclude='*.min.html' --exclude='*.min.json' --exclude='*.min.yaml' --exclude='*.min.yml' --exclude='*.min.xml' --exclude='*.min.php' --exclude='*.min.sh' --exclude='*.min.py' --exclude='*.min.rb' --exclude='*.min.java' --exclude='*.min.c' --exclude='*.min.cpp' --exclude='*.min.h' --exclude='*.min.hpp' --exclude='*.min.go' --exclude='*.min.rs' --exclude='*.min.dart' --exclude='*.min.swift' --exclude='*.min.kt' --exclude='*.min.ts' --exclude='*.min.tsx' --exclude='*.min.jsx' --exclude='*.min.vue' --exclude='*.min.scss' --exclude='*.min.sass' --exclude='*.min.less' --exclude='*.min.styl' --exclude='*.min.css' --exclude='*.min.html' --exclude='*.min.json' --exclude='*.min.yaml' --exclude='*.min.yml' --exclude='*.min.xml' --exclude='*.min.php' --exclude='*.min.sh' --exclude='*.min.py' --exclude='*.min.rb' --exclude='*.min.java' --exclude='*.min.c' --exclude='*.min.cpp' --exclude='*.min.h' --exclude='*.min.hpp' --exclude='*.min.go' --exclude='*.min.rs' --exclude='*.min.dart' --exclude='*.min.swift' --exclude='*.min.kt' --exclude='*.min.ts' --exclude='*.min.tsx' --exclude='*.min.jsx' --exclude='*.min.vue' --exclude='*.min.scss' --exclude='*.min.sass' --exclude='*.min.less' --exclude='*.min.styl' --exclude='*.min.css' --exclude='*.min.html' --exclude='*.min.json' --exclude='*.min.yaml' --exclude='*.min.yml' --exclude='*.min.xml' --exclude='*.min.php' --exclude='*.min.sh' --exclude='*.min.py' --exclude='*.min.rb' --exclude='*.min.java' --exclude='*.min.c' --exclude='*.png' --exclude='*.ico'"
+local exclude_dirs = "--glob '!node_modules/*' --glob '!dist/*' --glob '!build/*' --glob '!.git/*' --glob '!.cache/*' --glob '!public/*' --glob '!vendor/*' --glob '!log/*' --glob '!tmp/*'"
+local exclude_files = "--glob '!*.dump' --glob '!*.lock' --glob '!.eslintcache' --glob '!.DS_Store' --glob '!*.min.js' --glob '!*.min.css' --glob '!*.min.html' --glob '!*.min.json' --glob '!*.min.yaml' --glob '!*.min.yml' --glob '!*.min.xml' --glob '!*.min.php' --glob '!*.min.sh' --glob '!*.min.py' --glob '!*.min.rb' --glob '!*.min.java' --glob '!*.min.c' --glob '!*.min.cpp' --glob '!*.min.h' --glob '!*.min.hpp' --glob '!*.min.go' --glob '!*.min.rs' --glob '!*.min.dart' --glob '!*.min.swift' --glob '!*.min.kt' --glob '!*.min.ts' --glob '!*.min.tsx' --glob '!*.min.jsx' --glob '!*.min.vue' --glob '!*.min.scss' --glob '!*.min.sass' --glob '!*.min.less' --glob '!*.min.styl' --glob '!*.png' --glob '!*.ico'"
 
--- open Grep in the copen default vim window
+local function open_quickfix_list()
+  vim.cmd("copen")
+end
+
+local function execute_rg_command(rg_command)
+  local output = vim.fn.systemlist(rg_command)
+  vim.fn.setqflist({}, 'r', {title = 'Search Results', lines = output})
+  open_quickfix_list()
+end
+
 vim.keymap.set('n', '<leader>a', function()
   local input = vim.fn.input("Ack $word $types(,): ")
-  -- Split the input into search term and file types.
   local input_parts = vim.split(input, " ", {trimempty = true})
   local search_term = input_parts[1]
   local file_types = {}
@@ -58,29 +66,19 @@ vim.keymap.set('n', '<leader>a', function()
   end
 
   if search_term ~= "" then
-    -- Start constructing the grep command.
-    local grep_command = "silent grep -R " .. exclude_dirs .. " " .. exclude_files .. " "
-    -- Add include options for each specified file type.
+    local rg_command = "rg --vimgrep " .. exclude_dirs .. " " .. exclude_files .. " "
     for _, ext in ipairs(file_types) do
-      -- Ensure proper escaping for the shell that Vim uses
-      grep_command = grep_command .. "--include=\\*." .. ext .. " "
+      rg_command = rg_command .. "--glob '*." .. ext .. "' "
     end
-    -- Append the search term, properly escaped.
-    grep_command = grep_command .. vim.fn.shellescape(search_term) .. " ."
-    -- Execute the command.
-    vim.cmd(grep_command)
-    -- Open the quickfix list to show the results.
-    vim.cmd("copen")
+    rg_command = rg_command .. vim.fn.shellescape(search_term) .. " ."
+    execute_rg_command(rg_command)
   end
 end, {noremap = true, silent = true})
 
 local grep_word_under_cursor = function()
   local word = vim.fn.expand("<cword>")
-  -- Start constructing the grep command.
-  local grep_command = "silent grep -R " .. exclude_dirs .. " " .. exclude_files .. " "
-
-  vim.cmd(grep_command .. word .. " *")
-  vim.cmd("copen")
+  local rg_command = "rg --vimgrep " .. exclude_dirs .. " " .. exclude_files .. " " .. vim.fn.shellescape(word) .. " ."
+  execute_rg_command(rg_command)
 end
 
 vim.keymap.set("n", "<leader>k", grep_word_under_cursor, { noremap = true, silent = true })

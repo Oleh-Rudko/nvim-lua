@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
 
     -- for better highlight files
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('windwp/nvim-ts-autotag')
+    -- use('nvim-ts-autotag')
 
     -- telescope for fzf
     use {
@@ -34,6 +34,15 @@ return require('packer').startup(function(use)
         'coc-sql'
     }
     use { 'neoclide/coc.nvim', branch='release' }
+
+    -- zen mode
+    -- use { "folke/zen-mode.nvim" }
+    -- use {
+    --     'folke/which-key.nvim',
+    --     config = function()
+    --         require("which-key").setup {}
+    --     end
+    -- }
 
     -- chat gpt
     use({
