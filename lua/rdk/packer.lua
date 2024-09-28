@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
     -- use("jiaoshijie/undotree")
+    use 'aserebryakov/vim-todo-lists'
 
     local coc_global_extensions = {
         'coc-css',

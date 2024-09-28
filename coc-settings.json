@@ -1,11 +1,15 @@
 {
   "snippets.ultisnips.pythonPrompt": false,
+  "eslint.workingDirectories": ["./client"],
   "cSpell.userWords": [
     "alfuttaim",
     "b",
     "bryntum",
     "caat",
+    "camelize",
+    "cprf",
     "distechcontrols",
+    "dropdowns",
     "financials",
     "gantt",
     "geelongport",
@@ -16,13 +20,17 @@
     "lifecycles",
     "menards",
     "multiselect",
+    "pratpd",
     "prefetching",
+    "prepare",
     "pressable",
     "superadmin",
     "upsert",
+    "viber",
     "vite",
     "wannon",
     "wannonwater",
-    "westfund"
+    "westfund",
+    "whatsapp"
   ]
 }
