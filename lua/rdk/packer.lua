@@ -34,8 +34,30 @@ return require('packer').startup(function(use)
         'coc-dictionary',
         'coc-sql'
     }
+    -- move to none-ls.nvim, mason.nvim, nvim-cmp
     use { 'neoclide/coc.nvim', branch='release' }
 
+     -- Avante.nvim configuration
+    use {
+        "yetone/avante.nvim",
+        build = "make BUILD_FROM_SOURCE=true",
+        lazy = false,
+        version = false,
+        BUILD_FROM_SOURCE = true,
+        config = function()
+            require("avante_lib").load()
+            require("avante").setup()
+        end,
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "HakonHarnes/img-clip.nvim",
+        },
+    }
     -- zen mode
     -- use { "folke/zen-mode.nvim" }
     -- use {
