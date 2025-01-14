@@ -215,15 +215,15 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
 -- "rspec vim mappings
-vim.api.nvim_set_keymap('n', '<leader>s',
-    ":call RunNearestSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>t',
-    ":call RunCurrentSpecFile()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>l',
-    ":call RunLastSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>*',
-    ":call RunAllSpecs()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>s', ":call RunNearestSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>t', ":call RunCurrentSpecFile()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>l', ":call RunLastSpec()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>*', ":call RunAllSpecs()<CR>:redraw!<CR><CR>:!tmux select-window -t spec<CR><CR>", opts)
 vim.g.rspec_command = "silent !tmux send-keys -t spec 'clear' C-m 'bundle exec rspec --format progress --order rand {spec}' C-m"
+
+-- ChatGPT
+vim.api.nvim_set_keymap('n', '<leader>zc', ':ChatGPT<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>zoc', ':ChatGPTRun optimize_code<CR>', opts)
 
 -- Mappings for CoCList
 -- code actions and coc stuff
@@ -259,3 +259,20 @@ local opts = {silent = true, nowait = true}
 -- let g:ackprg = 'rg --vimgrep --no-heading'
 -- nmap <leader>gs :G<CR>
 
+-- Write a commit by ChatGPT and based on diff
+
+vim.api.nvim_create_user_command("GenerateCommit", function()
+    local handle = io.popen("git diff --cached")
+    local diff = handle:read("*a")
+    handle:close()
+
+    require("chatgpt").ask({
+        prompt = "Write a concise Git commit message describing these changes:\n" .. diff,
+        on_result = function(message)
+            print("\nSuggested Commit Message:\n" .. message)
+            vim.fn.setreg("+", message)
+        end
+    })
+end, {})
+
+vim.api.nvim_set_keymap("n", "<leader>zgc", ":GenerateCommit<CR>", { noremap = true, silent = true })

@@ -150,7 +150,7 @@ chatgpt.setup({
     },
     openai_params = {
         model = "gpt-4o-mini-2024-07-18",
-        -- model = "o1-mini",
+        -- model = "gpt-4o-2024-11-20",
         frequency_penalty = 0,
         presence_penalty = 0,
         max_tokens = 4096,
@@ -160,7 +160,7 @@ chatgpt.setup({
     },
     openai_edit_params = {
         model = "gpt-4o-mini-2024-07-18",
-        -- model = "o1-mini",
+        -- model = "gpt-4o-2024-11-20",
         frequency_penalty = 0,
         presence_penalty = 0,
         temperature = 0,

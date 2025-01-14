@@ -1,13 +1,15 @@
 local avante = require('avante')
 
 avante.setup({
-  auto_suggestions_provider = "openai",
+  provider = "openai",
+  model = "gpt-4-1106-preview",
   openai = {
+    api_key = vim.env.OPENAI_API_KEY,
     endpoint = "https://api.openai.com/v1",
-    model = "gpt-4o-mini-2024-07-18",
-    timeout = 30000, -- Timeout in milliseconds
-    temperature = 0,
+    timeout = 30000,
+    temperature = 0.2,
     max_tokens = 4096,
-    ["local"] = false,
   },
+  enable_suggestions = true,
+  disable_anthropic = true,
 })
